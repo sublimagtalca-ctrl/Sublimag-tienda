@@ -266,7 +266,7 @@ function CatalogView({ products, onAdminClick }) {
             <img src={LOGO_B64} alt="Sublimag" className="store-logo-img" />
             <div>
               <div className="store-name">{STORE_NAME}</div>
-              <div className="store-tagline">Estampados & Productos Personalizados · Talca</div>
+              <div className="store-tagline">Estampados &amp; Productos Personalizados · Talca</div>
             </div>
           </div>
           <button className="admin-btn" onClick={onAdminClick} title="Panel Admin">⚙</button>
@@ -490,10 +490,10 @@ export default function App() {
   const [view, setView] = useState("catalog");
   const [products, setProducts] = useState(INITIAL_PRODUCTS);
   useEffect(() => {
-    (async()=>{ try { const s=JSON.parse(localStorage.getItem("sublimag_v2") || "null"); if(s) setProducts(s); } catch{} })();
+    try { const s=JSON.parse(localStorage.getItem("sublimag_v2") || "null"); if(s) setProducts(s); } catch(e){}
   }, []);
   useEffect(() => {
-    (async()=>{ try { localStorage.setItem("sublimag_v2", JSON.stringify(products)); } catch{} })();
+    try { localStorage.setItem("sublimag_v2", JSON.stringify(products)); } catch(e){}
   }, [products]);
   return (
     <div className="app">
